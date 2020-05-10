@@ -1,6 +1,7 @@
 from django_countries.fields import CountryField
 from django.db import models
 
+
 class Foundation(models.Model):
     # TODO: Add user field
     name = models.CharField(max_length=50)
@@ -11,8 +12,10 @@ class Foundation(models.Model):
     def __str__(self):
         return self.name
 
+
 class ContentUpdate(models.Model):
-    foundation = models.ForeignKey(Foundation, on_delete=models.CASCADE)
+    foundation = models.ForeignKey(
+        Foundation, related_name='contentupdates', on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.TextField(max_length=5000)
 
